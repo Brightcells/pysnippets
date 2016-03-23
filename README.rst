@@ -34,5 +34,11 @@ Usage
     In [3]: dsnippets.filter({'a': 1, 'b': 2, 'c': 3}, ['c', 'd:4'], exec_eval=False)
     Out[3]: {'c': 3, 'd': '4'}
 
-    In [4]:
+    In [4]: dsnippets.gets({'a': 1, 'b': 2, 'c': 3}, ['c', 'd:4'])
+    Out[4]: [3, 4]
+
+    In [5]: dsnippets.gets({'a': 1, 'b': 2, 'c': 3}, ['c', 'd:4'], exec_eval=False)
+    Out[5]: [3, '4']
+
+    In [6]:
 
