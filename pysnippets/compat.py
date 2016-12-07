@@ -42,6 +42,9 @@ if is_py2:
     basestring = basestring
     numeric_types = (int, long, float)
 
+    import __builtin__
+    builtins = __builtin__
+
 elif is_py3:
     range = range
 
@@ -50,3 +53,6 @@ elif is_py3:
     bytes = bytes
     basestring = (str, bytes)
     numeric_types = (int, float)
+
+    import builtins
+    builtins = builtins
