@@ -42,3 +42,13 @@ list::
     In [3]: lsn.any([1, 2, 3], [1, 5])
     Out[3]: True
 
+
+str::
+
+    In [1]: import pysnippets.strsnippets as ssn
+
+    In [2]: ssn.strip(None)
+
+    In [3]: ssn.strip(' xyz ')
+    Out[3]: 'xyz'
+
