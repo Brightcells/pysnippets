@@ -36,6 +36,7 @@ class DictSnippets(object):
             _val.append(obj.get(k, self.eval_string(v) if exec_eval else v))
         return _val
 
+
 _global_instance = DictSnippets()
 filter = _global_instance.filter
 gets = _global_instance.gets
