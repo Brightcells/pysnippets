@@ -17,7 +17,7 @@ Usage
 
 dict::
 
-    In [1]: import pysnippets.dictsnippets as dsn
+    In [1]: from pysnippets import dictsnippets as dsn
 
     In [2]: dsn.filter({'a': 1, 'b': 2, 'c': 3}, ['c', 'd:4'])
     Out[2]: {'c': 3, 'd': 4}
@@ -34,7 +34,7 @@ dict::
 
 list::
 
-    In [1]: import pysnippets.listsnippets as lsn
+    In [1]: from pysnippets import listsnippets as lsn
 
     In [2]: lsn.all([1, 2, 3], [1, 2])
     Out[2]: True
@@ -45,7 +45,7 @@ list::
 
 str::
 
-    In [1]: import pysnippets.strsnippets as ssn
+    In [1]: from pysnippets import strsnippets as ssn
 
     In [2]: ssn.strip(None)
 
