@@ -19,3 +19,7 @@ class TestPyStrSnippetsCommands(object):
         assert ssn.trim({'a': 1}) == {'a': 1}
         assert ssn.trim('qwertyuiop', 3) == 'qwe'
         assert ssn.trim('qwertyuiop', 3, '...') == 'qwe...'
+
+    def test_removeU2006(self):
+        assert ssn.removeU2006('iOS\xe2\x80\x86') == 'iOS'
+        assert ssn.removeU2006(u'iOS\u2006') == 'iOS'

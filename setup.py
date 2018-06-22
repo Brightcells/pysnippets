@@ -20,7 +20,7 @@ setup(
 
     packages=['pysnippets'],
     py_modules=[],
-    install_requires=[],
+    install_requires=['CodeConvert'],
 
     classifiers=[
         "License :: OSI Approved :: BSD License",
