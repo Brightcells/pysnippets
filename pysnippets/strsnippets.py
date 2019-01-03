@@ -31,8 +31,22 @@ class StrSnippets(object):
     def removeU2006(self, s):
         return cc.Convert2Unicode(s).replace(u'\u2006', '').replace('\u2006', '')
 
+    # https://blog.csdn.net/candyguy242/article/details/8476093
+    # https://jianshu.com/p/72546884588a
+    def removeU202C(self, s):
+        return cc.Convert2Unicode(s).replace(u'\u202c', '').replace('\u202c', '')
+
+    def removeU202D(self, s):
+        return cc.Convert2Unicode(s).replace(u'\u202d', '').replace('\u202d', '')
+
+    def removeAll(self, s):
+        return self.removeU202D(self.removeU202C(self.removeU2006(s)))
+
 
 _global_instance = StrSnippets()
 strip = _global_instance.strip
 trim = _global_instance.trim
 removeU2006 = _global_instance.removeU2006
+removeU202C = _global_instance.removeU202C
+removeU202D = _global_instance.removeU202D
+removeAll = _global_instance.removeAll
