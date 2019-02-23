@@ -28,18 +28,34 @@ class StrSnippets(object):
 
     # https://github.com/fredshare/blog/issues/21
     # https://my.oschina.net/konglo/blog/738678
-    def removeU2006(self, s):
+    def removeU2006(self, s, strip_whitespace=False):
+        if not isinstance(s, basestring):
+            return s
+        if strip_whitespace:
+            s = s.strip()
         return cc.Convert2Unicode(s).replace(u'\u2006', '').replace('\u2006', '')
 
     # https://blog.csdn.net/candyguy242/article/details/8476093
     # https://jianshu.com/p/72546884588a
-    def removeU202C(self, s):
+    def removeU202C(self, s, strip_whitespace=False):
+        if not isinstance(s, basestring):
+            return s
+        if strip_whitespace:
+            s = s.strip()
         return cc.Convert2Unicode(s).replace(u'\u202c', '').replace('\u202c', '')
 
-    def removeU202D(self, s):
+    def removeU202D(self, s, strip_whitespace=False):
+        if not isinstance(s, basestring):
+            return s
+        if strip_whitespace:
+            s = s.strip()
         return cc.Convert2Unicode(s).replace(u'\u202d', '').replace('\u202d', '')
 
-    def removeAll(self, s):
+    def removeAll(self, s, strip_whitespace=False):
+        if not isinstance(s, basestring):
+            return s
+        if strip_whitespace:
+            s = s.strip()
         return self.removeU202D(self.removeU202C(self.removeU2006(s)))
 
 
