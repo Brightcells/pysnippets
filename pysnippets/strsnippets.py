@@ -58,6 +58,9 @@ class StrSnippets(object):
             s = s.strip()
         return self.removeU202D(self.removeU202C(self.removeU2006(s)))
 
+    def removeLineBreak(self, s):
+        return s.replace('\r', '').replace('\n', '').replace('\r\n', '')
+
 
 _global_instance = StrSnippets()
 strip = _global_instance.strip
@@ -66,3 +69,4 @@ removeU2006 = _global_instance.removeU2006
 removeU202C = _global_instance.removeU202C
 removeU202D = _global_instance.removeU202D
 removeAll = _global_instance.removeAll
+removeLineBreak = _global_instance.removeLineBreak

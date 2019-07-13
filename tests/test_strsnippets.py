@@ -23,3 +23,6 @@ class TestPyStrSnippetsCommands(object):
     def test_removeU2006(self):
         assert ssn.removeU2006('iOS\xe2\x80\x86') == 'iOS'
         assert ssn.removeU2006(u'iOS\u2006') == 'iOS'
+
+    def test_removeLineBreak(self):
+        assert ssn.removeLineBreak('a\rb\nc\r\nd') == 'abcd'
