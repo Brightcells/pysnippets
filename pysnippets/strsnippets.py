@@ -6,7 +6,7 @@ import re
 
 from CodeConvert import CodeConvert as cc
 
-from .compat import basestring
+from .compat import basestring, html_escape
 
 
 class StrSnippets(object):
@@ -61,6 +61,16 @@ class StrSnippets(object):
     def removeLineBreak(self, s):
         return s.replace('\r', '').replace('\n', '').replace('\r\n', '')
 
+    def repl_fun(self, matched):
+        return ''.join((html_escape(m) if not m or not re.match(r'<[^<>]+?>', m) else m) for m in matched.groups())
+
+    def escape_html_content(self, s):
+        """
+        Input `<div><pre>a<b</pre></div>`
+        Output `<div><pre>a&lt;b</pre></div>`
+        """
+        return re.sub(r'(.*?)(<[^<>]+?>)', self.repl_fun, s + '<o>')[:-3]
+
 
 _global_instance = StrSnippets()
 strip = _global_instance.strip
@@ -70,3 +80,4 @@ removeU202C = _global_instance.removeU202C
 removeU202D = _global_instance.removeU202D
 removeAll = _global_instance.removeAll
 removeLineBreak = _global_instance.removeLineBreak
+escape_html_content = _global_instance.escape_html_content

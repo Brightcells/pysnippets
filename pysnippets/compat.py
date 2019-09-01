@@ -45,6 +45,8 @@ if is_py2:
     import __builtin__
     builtins = __builtin__
 
+    from cgi import escape as html_escape
+
 elif is_py3:
     range = range
 
@@ -56,3 +58,5 @@ elif is_py3:
 
     import builtins
     builtins = builtins
+
+    from html import escape as html_escape

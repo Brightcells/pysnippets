@@ -26,3 +26,8 @@ class TestPyStrSnippetsCommands(object):
 
     def test_removeLineBreak(self):
         assert ssn.removeLineBreak('a\rb\nc\r\nd') == 'abcd'
+
+    def test_escape_html_content(self):
+        pre = 'yy<>xx<div><pre>a<b</pre></div>xx<>yy'
+        aft = 'yy&lt;&gt;xx<div><pre>a&lt;b</pre></div>xx&lt;&gt;yy'
+        assert ssn.escape_html_content(pre) == aft
