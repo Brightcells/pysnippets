@@ -69,6 +69,8 @@ class StrSnippets(object):
         Input `<div><pre>a<b</pre></div>`
         Output `<div><pre>a&lt;b</pre></div>`
         """
+        if not isinstance(s, basestring):
+            return s
         return re.sub(r'(.*?)(<[^<>]+?>)', self.repl_fun, s + '<o>')[:-3]
 
 
