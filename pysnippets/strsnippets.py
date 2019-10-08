@@ -58,8 +58,8 @@ class StrSnippets(object):
             s = s.strip()
         return self.removeU202D(self.removeU202C(self.removeU2006(s)))
 
-    def removeLineBreak(self, s):
-        return s.replace('\r', '').replace('\n', '').replace('\r\n', '')
+    def removeLineBreak(self, s, repl=' '):
+        return s.replace('\r\n', repl).replace('\r', repl).replace('\n', repl)
 
     def repl_fun(self, matched):
         return ''.join((html_escape(m) if not m or not re.match(r'<[^<>]+?>', m) else m) for m in matched.groups())

@@ -25,7 +25,9 @@ class TestPyStrSnippetsCommands(object):
         assert ssn.removeU2006(u'iOS\u2006') == 'iOS'
 
     def test_removeLineBreak(self):
-        assert ssn.removeLineBreak('a\rb\nc\r\nd') == 'abcd'
+        assert ssn.removeLineBreak('a\rb\nc\r\nd') == 'a b c d'
+        assert ssn.removeLineBreak('a\rb\nc\r\nd', repl='') == 'abcd'
+        assert ssn.removeLineBreak('a\rb\nc\r\nd', repl='<br>') == 'a<br>b<br>c<br>d'
 
     def test_escape_html_content(self):
         pre = 'yy<>xx<div><pre>a<b</pre></div>xx<>yy'
