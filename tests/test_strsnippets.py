@@ -33,3 +33,8 @@ class TestPyStrSnippetsCommands(object):
         pre = 'yy<>xx<div><pre>a<b</pre></div>xx<>yy'
         aft = 'yy&lt;&gt;xx<div><pre>a&lt;b</pre></div>xx&lt;&gt;yy'
         assert ssn.escape_html_content(pre) == aft
+
+    def test_remove_html_tags(self):
+        pre = 'yy<>xx<div><pre>a<b</pre></div>xx<>yy'
+        aft = 'yy<>xxa<bxx<>yy'
+        assert ssn.remove_html_tags(pre) == aft
