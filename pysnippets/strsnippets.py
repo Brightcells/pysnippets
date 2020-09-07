@@ -61,6 +61,11 @@ class StrSnippets(object):
     def removeLineBreak(self, s, repl=' '):
         return s.replace('\r\n', repl).replace('\r', repl).replace('\n', repl)
 
+    def remove_html_tags(self, s):
+        if not isinstance(s, basestring):
+            return s
+        return re.sub(r'<[^<>]+?>', '', s)
+
     def repl_fun(self, matched):
         return ''.join((html_escape(m) if not m or not re.match(r'<[^<>]+?>', m) else m) for m in matched.groups())
 
@@ -82,4 +87,5 @@ removeU202C = _global_instance.removeU202C
 removeU202D = _global_instance.removeU202D
 removeAll = _global_instance.removeAll
 removeLineBreak = _global_instance.removeLineBreak
+remove_html_tags = _global_instance.remove_html_tags
 escape_html_content = _global_instance.escape_html_content
