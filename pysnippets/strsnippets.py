@@ -62,6 +62,8 @@ class StrSnippets(object):
         return s.replace('\r\n', repl).replace('\r', repl).replace('\n', repl)
 
     def remove_html_tags(self, s):
+        if isinstance(s, list):
+            return [self.remove_html_tags(s_) for s_ in s]
         if not isinstance(s, basestring):
             return s
         return re.sub(r'<[^<>]+?>', '', s)
@@ -74,6 +76,8 @@ class StrSnippets(object):
         Input `<div><pre>a<b</pre></div>`
         Output `<div><pre>a&lt;b</pre></div>`
         """
+        if isinstance(s, list):
+            return [self.escape_html_content(s_) for s_ in s]
         if not isinstance(s, basestring):
             return s
         return re.sub(r'(.*?)(<[^<>]+?>)', self.repl_fun, s + '<o>')[:-3]
